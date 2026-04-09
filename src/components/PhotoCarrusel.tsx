@@ -21,7 +21,7 @@ interface Foto {
 export default function PhotoCarousel() {
   const [fotos, setFotos] = useState<Foto[]>([])
   const [loading, setLoading] = useState(true)
-  const [showDownbar, setShowDownbar] = useState(false)
+  const [showDownbar, setShowDownbar] = useState(true)
   const timerRef = useRef<NodeJS.Timeout | null>(null)
 
   const fetchFotos = async () => {
@@ -43,8 +43,6 @@ export default function PhotoCarousel() {
   // Auto-hide después de 5 segundos
   useEffect(() => {
     if (showDownbar) {
-      // Limpiar timer anterior si existe
-      if (timerRef.current) clearTimeout(timerRef.current)
 
       timerRef.current = setTimeout(() => {
         setShowDownbar(false)
