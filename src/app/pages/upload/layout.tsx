@@ -14,7 +14,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <main className="bg-linear-to-br from-pink-50 to-purple-100">
+    <main className="bg-linear-to-br from-pink-50 to-purple-100 overflow-y-hidden">
         {children}
     </main>
   );
