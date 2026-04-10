@@ -64,9 +64,9 @@ export default function Home() {
         </div>
 
         {/* Texto adicional opcional */}
-        <p className="text-center text-xs text-pink-400 mt-6">
+        {/* <p className="text-center text-xs text-pink-400 mt-6">
           Puedes subir hasta 10 fotos cada 30 minutos
-        </p>
+        </p> */}
       </div> 
       <Downbar visible={true} showUsers={true} showWindow={false}/>
     </div>

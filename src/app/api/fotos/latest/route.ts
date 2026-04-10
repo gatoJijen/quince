@@ -8,7 +8,6 @@ export async function GET() {
   const { data: files, error } = await supabase.storage
     .from('quince-fotos')                  // ← bucket correcto
     .list('public', {
-      limit: 10,
       sortBy: { column: 'created_at', order: 'desc' }
     })
 
