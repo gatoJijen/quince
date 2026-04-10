@@ -10,6 +10,7 @@ import 'swiper/css/pagination'
 
 import Image from 'next/image'
 import Downbar from './Downbar' // ← ajusta la ruta según tu carpeta
+import Aviso from './Aviso'
 
 interface Foto {
   id: string
@@ -104,6 +105,7 @@ export default function PhotoCarousel() {
         showWindow={true}
         showUsers={false}
       />
+      <Aviso visible={showDownbar}/>
     </div>
   )
 }
