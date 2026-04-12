@@ -1,11 +1,15 @@
 'use client'
 
+import Aviso from '@/components/Aviso'
 import Downbar from '@/components/Downbar'
 import Navbar from '@/components/Navbar'
 import { subirFoto } from '@/components/upload-foto'
 import { UploadCloud } from 'lucide-react'
+import { useEffect, useRef, useState } from 'react'
 
 export default function Home() {
+  const [showDownbar, setShowDownbar] = useState(false)
+  const timerRef = useRef<NodeJS.Timeout | null>(null)
   const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files
     if (!files) return
@@ -13,10 +17,22 @@ export default function Home() {
     for (const file of files) {
       await subirFoto(file)
     }
+    setShowDownbar(true)
 
     // Limpiar el input
     e.target.value = ''
   }
+  useEffect(() => {
+      if (showDownbar) {
+        timerRef.current = setTimeout(() => {
+          setShowDownbar(false)
+        }, 3000)
+      }
+  
+      return () => {
+        if (timerRef.current) clearTimeout(timerRef.current)
+      }
+    }, [showDownbar])
 
   return (
     <div className="min-h-screen  flex items-center justify-center p-6">
@@ -69,6 +85,7 @@ export default function Home() {
         </p> */}
       </div> 
       <Downbar visible={true} showUsers={true} showWindow={false}/>
+      <Aviso visible={showDownbar} text='Se ha subido la imagen correctamente' color='text-green-300'/>
     </div>
   )
 }

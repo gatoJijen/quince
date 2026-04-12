@@ -96,7 +96,7 @@ export default function PhotoCarousel() {
     if (showDownbar) {
       timerRef.current = setTimeout(() => {
         setShowDownbar(false)
-      }, 3000)
+      }, 4000)
     }
 
     return () => {
@@ -154,7 +154,7 @@ export default function PhotoCarousel() {
       </div>
 
       <Downbar visible={showDownbar} showWindow={true} showUsers={false} />
-      <Aviso visible={showDownbar} />
+      <Aviso visible={showDownbar} text='Mantega presionado para compartir'/>
     </div>
   )
 }
